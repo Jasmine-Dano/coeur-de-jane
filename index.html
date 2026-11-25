@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cœur de Jane — dress rentals from ₱450 along Loyola Street, Quiapo, Manila, near FEU, UE and CEU. Book via Instagram @coeur_dejane.">
+<title>Cœur de Jane</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FAF9F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=8">
+</head>
+<body>
+<header class="top">
+ <div class="hd">
+  <button class="ib" id="menuBtn" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+  <a class="logo" href="#top"><img class="mark" src="assets/logo.svg" alt="" width="38" height="38"><span><b>Cœur de Jane</b><small>DRESS RENTALS · QUIAPO</small></span></a>
+  <div class="right">
+   <button class="ib" id="searchBtn" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+   <a class="ib" href="#fitting" data-fit aria-label="Book a fitting" title="Book a fitting"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4a2 2 0 1 1 2 2c-1 0-2 .8-2 2v1"/><path d="M12 9 3 16.5c-.6.5-.3 1.5.5 1.5h17c.8 0 1.1-1 .5-1.5L12 9z"/></svg></a>
+  </div>
+ </div>
+ <nav class="menu" id="menu"><a href="#shop" data-cat="All">Shop all dresses</a><a href="#shop" data-cat="On hand">On hand</a><a href="#shop" data-cat="Wedding Gown">Wedding gowns</a><a href="#shop" data-cat="Collections">Collections</a><a href="#how">How to rent</a><a href="#fitting" data-fit>Fitting service</a><a href="#book">Bookings &amp; inquiries</a><a href="https://www.instagram.com/coeur_dejane" target="_blank" rel="noopener">Instagram</a><a href="admin.html" class="ownerLink">Owner login</a></nav>
+</header>
+
+<div class="notes" id="top"><span>Loyola Street, Quiapo, Manila — near FEU, UE &amp; CEU</span><span>Dresses on hand rent at ₱450 · Wedding gowns at a special rate</span></div>
+
+<section class="band"><div class="wrap hero">
+ <div>
+  <p class="eyebrow serif"><em>Dress rentals in Quiapo, Manila</em></p>
+  <h1>Look unforgettable, <em>from just ₱450.</em></h1>
+  <p class="lead">Why buy a dress you'll wear once? Rent a soft, romantic piece for your debut, prom, grad pics or birthday, and keep your budget for the rest of your big day.</p>
+  <div class="btns"><a class="btn car big" href="#shop">Find my dress</a><a class="btn line big" href="https://ig.me/m/coeur_dejane" target="_blank" rel="noopener">Message us on Instagram</a></div>
+  <ul class="trust">
+   <li><b>₱450</b><span>dresses on hand</span></li>
+   <li><b><span id="dressCount">17</span></b><span>dresses to choose from</span></li>
+   <li><b>XS–M</b><span>sizes available</span></li>
+  </ul>
+ </div>
+ <div class="heroFig"><span class="heroTag" id="heroTag">Most rented</span><div class="heroPick" id="heroPick"></div></div>
+</div></section>
+
+<section class="occ" aria-label="Perfect for">
+ <span>Perfect for</span><i>Debuts</i><i>JS Prom</i><i>Grad pictorials</i><i>Birthdays</i><i>Wedding guests</i><i>Photoshoots</i><i>Formal nights</i>
+</section>
+
+<section class="band why"><div class="wrap">
+ <h2>Why rent with <em>Cœur de Jane</em></h2>
+ <div class="whys">
+  <div><b class="peso" aria-hidden="true">₱</b><strong>Simple prices</strong><span>Dresses on hand are ₱450. Wedding gowns have a special rental rate, shown on each gown.</span></div>
+  <div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><strong>Right by your campus</strong><span>On Loyola Street, Quiapo, a short walk from FEU, UE and CEU. Easy to drop by between classes.</span></div>
+  <div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg><strong>Book in one message</strong><span>Tap Rent, add your date and venue, and we write the Instagram message for you. Just paste and send.</span></div>
+ </div>
+</div></section>
+
+<section class="band" id="shop" style="padding-top:0"><div class="wrap">
+ <h2>Our <em>dresses</em></h2>
+ <p class="tiny" id="countLine"></p>
+ <div class="cats" id="cats" role="group" aria-label="Categories"></div>
+ <div class="tools">
+  <label class="search"><span class="ib" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><input id="q" type="search" placeholder="Search dresses or colors" aria-label="Search dresses"></label>
+  <div id="sizes" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+ </div>
+ <div class="grid" id="grid"></div>
+ <p class="tiny" id="photoNote" style="margin-top:18px"></p>
+</div></section>
+
+<section class="band" id="how" style="border-top:1px solid var(--line)"><div class="wrap">
+ <h2>How to <em>rent</em></h2>
+ <ol class="steps">
+  <li><i>i.</i><strong>Choose your dress</strong><span>Open a dress and pick your size.</span></li>
+  <li><i>ii.</i><strong>Pick a free date</strong><span>The calendar shows which days are already booked, so you only see dates that are open.</span></li>
+  <li><i>iii.</i><strong>Fill out the form &amp; pay</strong><span>Your name, contact number, address and courier (Lalamove or Pick-up). Pay via GCash and upload the screenshot.</span></li>
+  <li><i>iv.</i><strong>We confirm</strong><span>Your date is held right away. We contact you to confirm and get your dress ready.</span></li>
+ </ol>
+</div></section>
+
+<section class="band fitting" id="fitting"><div class="wrap fitbox">
+ <div>
+  <h2>Fitting Service <em>Available</em></h2>
+  <p>Fitting is available for <b data-fee>₱200</b>, covering 5–10 dresses. Dresses must be returned immediately after fitting. Subject to availability.</p>
+  <ul class="fitpts"><li>Choose 5 to 10 dresses to try on</li><li>Delivery by Lalamove or pick-up in Quiapo</li><li>Pay via GCash and upload your screenshot</li></ul>
+ </div>
+ <a class="btn car big" href="#fitting" data-fit>Book a fitting</a>
+</div></section>
+
+<section class="band cta"><div class="wrap">
+ <div class="ctaBox">
+  <div>
+   <h2>Found <em>the one?</em></h2>
+   <p>Each dress can only go to one person per date, so message us early to make sure yours is free on your big day.</p>
+  </div>
+  <div class="btns"><a class="btn car big" href="https://ig.me/m/coeur_dejane" target="_blank" rel="noopener">Check availability</a><a class="btn line big" href="https://www.instagram.com/coeur_dejane" target="_blank" rel="noopener">See our clients' photos</a></div>
+ </div>
+</div></section>
+
+<section class="band book" id="book"><div class="wrap">
+ <h2>Bookings <em>&amp;</em> Inquiries</h2>
+ <p>For bookings and inquiries, kindly send us a message on Instagram: <a class="ig" href="https://www.instagram.com/coeur_dejane" target="_blank" rel="noopener">@coeur_dejane</a></p>
+ <p>When sending us a message, please include the following details right away so we can check the availability of your preferred dress:</p>
+ <div class="fields"><div>Dress Name:</div><div>Date of Use: (Exact date and time needed)</div><div>Event Location:</div></div>
+ <p>For actual photos of our dresses worn by clients, you may visit our “Clients” highlights on Instagram.</p>
+ <p>Thank you for choosing Cœur de Jane! We look forward to dressing you for your special occasion. 🤍</p>
+ <h2 style="font-size:34px;margin-top:34px"><em>Get Connected</em></h2>
+ <div class="social">
+  <a href="https://www.facebook.com/people/The-C%C5%93ur-de-Jane/61560330605560/" target="_blank" rel="noopener" aria-label="Cœur de Jane on Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H7.7V14h2.7v8h3.1z"/></svg></a>
+  <a href="https://www.instagram.com/coeur_dejane" target="_blank" rel="noopener" aria-label="Cœur de Jane on Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
+ </div>
+</div></section>
+
+<footer>
+ <p class="serif" style="font-size:24px;margin:0">Search our store</p>
+ <form class="search" id="fsearch"><input id="fq" type="search" placeholder="Search dresses" aria-label="Search dresses"><button aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></form>
+ <div>© 2026 Cœur de Jane · Loyola Street, Quiapo, Manila</div>
+ <a class="adminLink" href="admin.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Owner login</a>
+ 
+</footer>
+
+<div class="mbar" id="mbar"><span>From <b>₱450</b></span><a class="btn car" href="#shop">Browse dresses</a></div>
+<div class="ov modal" id="pdOv" role="dialog" aria-modal="true" aria-label="Dress details"><div class="sheet" id="pd"></div></div>
+<div class="ov modal" id="fitOv" role="dialog" aria-modal="true" aria-label="Fitting service"><div class="sheet" id="fit"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/firebase-config.js"></script>
+<script src="assets/dresses-default.js"></script>
+<script>window.CDJ_LOADING = !!(window.FIREBASE_CONFIG && window.FIREBASE_CONFIG.apiKey);</script>
+<script src="assets/app.js?v=8"></script>
+<script type="module" src="assets/shop-data.js?v=5"></script>
+</body>
+</html>
