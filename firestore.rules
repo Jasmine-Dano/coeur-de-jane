@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only the shop owner's login can change dresses, settings and bookings.
+    // To add another admin, add their email to this list, e.g. ['a@gmail.com', 'b@gmail.com']
+    function isOwner() {
+      return request.auth != null && request.auth.token.email in ['danojasmine144@gmail.com'];
+    }
+    function str(v, max) { return v is string && v.size() > 0 && v.size() <= max; }
+
+    match /dresses/{id} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+    match /photos/{id} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+    // Extra photos per dress: everyone sees them, only the owner adds or removes them.
+    match /gallery/{id} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+    // GCash number and other shop settings: everyone reads, only the owner changes.
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // Customers can send a rental or fitting request, but can't read, change or delete any.
+    match /bookings/{id} {
+      allow read, update, delete: if isOwner();
+      allow create: if request.resource.data.keys().hasOnly(['type', 'ref', 'name', 'contact', 'address', 'courier', 'total', 'rental', 'fitting', 'hasPayment', 'status', 'createdAt'])
+        && request.resource.data.type in ['rental', 'fitting']
+        && request.resource.data.status == 'Pending'
+        && request.resource.data.courier in ['Lalamove', 'Pick-up']
+        && str(request.resource.data.name, 80)
+        && str(request.resource.data.contact, 20)
+        && str(request.resource.data.address, 300)
+        && request.resource.data.createdAt == request.time
+        && (request.resource.data.type != 'rental' || (
+              request.resource.data.rental is map
+              && request.resource.data.rental.usageDate is string
+              && request.resource.data.rental.usageDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')))
+        && (request.resource.data.type != 'fitting' || (
+              request.resource.data.fitting is map
+              && request.resource.data.fitting.dresses is list
+              && request.resource.data.fitting.dresses.size() >= 5
+              && request.resource.data.fitting.dresses.size() <= 10));
+    }
+
+    // GCash screenshots: sent together with a booking; only the owner can view them.
+    match /payments/{id} {
+      allow read, update, delete: if isOwner();
+      allow create: if request.resource.data.keys().hasOnly(['data', 'createdAt'])
+        && request.resource.data.data is string
+        && request.resource.data.data.size() < 1000000
+        && existsAfter(/databases/$(database)/documents/bookings/$(id));
+    }
+
+    // Booked dates. Everyone can see which dates are taken (no personal details).
+    // A date can only be taken once: if it already exists, a second booking is refused.
+    match /blocked/{id} {
+      allow read: if true;
+      allow update, delete: if isOwner();
+      allow create: if isOwner() || (
+        request.resource.data.keys().hasOnly(['dressId', 'date', 'bookingId'])
+        && request.resource.data.date is string
+        && request.resource.data.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && id == request.resource.data.dressId + '_' + request.resource.data.date
+        && getAfter(/databases/$(database)/documents/bookings/$(request.resource.data.bookingId)).data.rental.dressId == request.resource.data.dressId
+        && getAfter(/databases/$(database)/documents/bookings/$(request.resource.data.bookingId)).data.rental.usageDate == request.resource.data.date);
+    }
+  }
+}
